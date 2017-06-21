@@ -1,0 +1,3 @@
+fixtures:
+  symlinks:
+    "spamassassin": "#{source_dir}" #Symlink to the root of the module
