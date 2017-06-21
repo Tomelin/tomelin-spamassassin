@@ -3,13 +3,16 @@ require 'spec_helper'
 describe 'spamassassin' do
 
   context 'RedHat' do
-    let(:facts) { { 
+    let(:facts) do
+    { 
       :osfamily => 'RedHat',
       :operatingsystem => 'CentOS' 
       :architecture => 'x86_64', 
 
     let(:title) { 'spamassassin' }
     let(:node) { 'test.example.com' }
+    }
+    end
 
     it { is_expected.to compile }
     it { is_expected.to compile.with_all_deps }
@@ -29,5 +32,7 @@ describe 'spamassassin' do
         :enabled => true,
        ) 
     }
-  }}
+  
+  end
+
 end
