@@ -1,32 +1,30 @@
-require 'spec_helper'
+require'spec_helper'
 
-describe 'spamassassin::files', :type => :class do
-  let(:node) { 'test.example.com' }
+describe 'spamassassin', :type => :class do  
+	let(:node) { 'testhost.example.com' }
 
-  describe 'when called with no parameters on redhat'do
-    let(:facts) do { {
-    { 
-      :osfamily => 'Redhat',
-      :ipaddress => '127.0.0.1' ,
-    } }
+  describe 'when called with no parameters on redhat' do
 
-    it { should contain_package('apache').with({
-      'ensure' => 'present',
-      'name'   => 'spamassassin',
+    let (:facts) { {
+			:osfamily  => 'Redhat',
+			:ipaddress => '127.0.0.1'
+                 } } 
+
+   it {
+      should contain_package('spamassassin').with({
+				'ensure' => 'present',
       })
 
-      should contain_file('v310.pre').with({
-        'ensure' => 'file',
-        'source' => 'puppet:///modules/spamassassin/v310.pre',
+      should contain_file('v312.pre').with({
+				'ensure' => 'file',
+				'source' => 'puppet:///modules/spamassassin/v312.pre',
       })
 
       should contain_service('spamassassin').with({
-        'ensure' => 'running',
-        'enable' => 'true',
-        'name'   => 'spamassassin',
+				'ensure' => 'running',
+				'enable' => 'true',
       })
+    }
 
-   }
-  
   end
 end

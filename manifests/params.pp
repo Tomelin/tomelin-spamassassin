@@ -23,15 +23,19 @@ class spamassassin::params {
   String $syslog           = 'mail'
   String $trusted_networks = ''
   Array $whitelist_from    = []
-  Array $package_list      = [
+
+  case $facts['os']['family'] {
+		'redhat': {
+  
+			Array $package_list      = [
         'perl-Encode-Detect', 'perl-Geography-Countries',
         'perl-IP-Country', 'perl-Mail-DKIM',
         'perl-Mail-DomainKeys', 'perl-Mail-SPF',
         'perl-Mail-SPF-Query', 'perl-Net-Ident',
         'spamassassin',
       ]
-   String $sa_update       = '/usr/share/spamassassin/sa-update.cron 2>&1 | tee -a /var/log/sa-update.log'
-   String $sa_path         = '/etc/mail/spamassassin'
-   String $sa_service      = 'spamassassin'
-
+   	String $sa_update       = '/usr/share/spamassassin/sa-update.cron 2>&1 | tee -a /var/log/sa-update.log'
+   	String $sa_path         = '/etc/mail/spamassassin'
+   	String $sa_service      = 'spamassassin'
+	}
 }
