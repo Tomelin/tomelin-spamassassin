@@ -6,12 +6,12 @@ describe 'spamassassin' do
     let(:facts) do
     { 
       :osfamily => 'RedHat',
-      :operatingsystem => 'CentOS' 
+      :operatingsystem => 'CentOS' ,
       :architecture => 'x86_64', 
-
+    } 
     let(:title) { 'spamassassin' }
     let(:node) { 'test.example.com' }
-    }
+     
     end
 
     it { is_expected.to compile }
