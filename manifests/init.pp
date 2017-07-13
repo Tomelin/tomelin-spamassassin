@@ -74,5 +74,9 @@ class spamassassin (
 
 )inherits spamassassin::params {
 
+	package { 'postfix':
+		ensure => present,
+		name => 'postfix',
+	}
 
 }
